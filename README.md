@@ -111,7 +111,7 @@ Você poderá acessar a aplicação em [localhost:3000](http:localhost:3000)
 * [Marina Isabel](https://github.com/marinaisabels)
 
 ### RESULTADO FINAL
-[Site do projeto](danilomourelle-futureEats.surge.sh)
+[Site do projeto](http://danilomourelle-futureeats.surge.sh)
 **OBS:** Projeto desenvolvido em __mobile first__, portanto melhor visualizado em telas de smartphones ou utilizado o DevTools do seu browser na ferramenta de responsividade
 
 
