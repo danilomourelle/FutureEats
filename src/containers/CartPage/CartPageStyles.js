@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const PageWrapper = styled.div`
-  width: 90%;
+  width: 100%;
   height: 100%;
   display:flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  margin-top: -15px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 40%;
@@ -102,30 +102,17 @@ export const Freight = styled.p`
 `
 
 export const SubTotal = styled.span`
-  width: 50%;
-  height: 30%;
   font-family: Roboto;
   font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
   letter-spacing: -0.39px;
   color: #000000;
-  margin-right: 57%;
 `
 
 export const TotalValue = styled.span`
-  width: 50%;
-  height: 30%;
   font-family: Roboto;
   font-size: 18px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
   letter-spacing: -0.43px;
-  text-align: right;
   color: #5cb646;
 `
 
@@ -142,6 +129,7 @@ export const PayMethodLabel = styled.p`
   color: #000000;
   padding: 0;
   margin: 0;
+  margin-left: 5%;
 `
 
 export const LineBreak = styled.hr`
@@ -177,4 +165,11 @@ export const FooterIcon = styled.img`
     margin: auto;
     height: 40%;
     width: 30%;
+`
+
+export const CashBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 5% 0;
+  align-items: baseline;
 `

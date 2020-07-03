@@ -57,3 +57,6 @@ export const Divisor = styled.div`
     margin: 0;
   }
 `
+export const NoOrderParagraphy = styled.p`
+  margin-left: 16px
+`

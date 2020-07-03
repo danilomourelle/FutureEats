@@ -14,3 +14,13 @@ export const FormStyle = styled.form`
 export const LogoFutureEats = styled.img`
   padding: 15px;
 `
+export const Text = styled.p`
+  width:100%;
+  padding: 0 16px;
+  text-align:center;
+  span{
+    color:#5cb646;
+    font-weight:bold;
+    cursor: pointer;
+  }
+`

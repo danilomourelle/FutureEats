@@ -8,31 +8,27 @@ import Slide from '@material-ui/core/Slide';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import { connect } from 'react-redux'
 import styled from 'styled-components';
-import {setOrder} from '../../actions/SetOrder'
+
+
 const DialogText = styled.div`
   height: 18px;
   margin-bottom:31px;
   margin-top:43px;
   font-family: Roboto;
   font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
   letter-spacing: -0.39px;
   text-align: center;
   color: #000000;
 `
 const theme = createMuiTheme({
   palette: {
-    primary: { 
+    primary: {
       main: "#5cb646",
     },
-    action:{
-      disabledBackground:'#aedaa3',
-      disabled:'#333'
+    action: {
+      disabledBackground: '#aedaa3',
+      disabled: '#333'
     }
   },
   overrides: {
@@ -53,80 +49,66 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export function AlertDialogAddItem(props){
-  const [quantity, setQtde] = React.useState(0);
-  const [open, setOpen] = React.useState(false);
+function AlertDialogAddItem(props) {
+  const [quantity, setQtde] = React.useState(1);
+  const [open, setOpen] = React.useState(true);
 
   const handleChange = (event) => {
-    setQtde(event.target.value);
-  };
-
-  const handleClickOpen = () => {
-    setOpen(true);
+    if (event.target.value > 0) {
+      setQtde(event.target.value);
+    }
   };
 
   const handleClose = () => {
     setOpen(false);
   };
-  const handleAdd = ()=> {
-    const order = {quantity: quantity,id: props.id,restaurantId: props.restaurantId}
-    props.setOrder(order)
-    setQtde(0)
-    setOpen(false);
-  }
-  return (
-    <div>
-      <div onClick={handleClickOpen}>
-        Adicionar
-      </div>
 
-      <Dialog
-        open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={handleClose}
-      >
-        <DialogTitle><DialogText>Selecione a quantidade desejada</DialogText></DialogTitle>
-        <DialogContent>
-          <ThemeProvider theme={theme}>
-            <Select
-              defaultValue
-              value={quantity}
-              style={{
-                width: "100%",
-                height: "56px",
-                border: "solid 1px #b8b8b8"
-              }}
-              onChange={handleChange}
-            
-            >
-              <MenuItem value={0}>0</MenuItem>
-              <MenuItem value={1}>1</MenuItem>
-              <MenuItem value={2}>2</MenuItem>
-              <MenuItem value={3}>3</MenuItem>
-              <MenuItem value={4}>4</MenuItem>
-              <MenuItem value={5}>5</MenuItem>
-              <MenuItem value={6}>6</MenuItem>
-              <MenuItem value={7}>7</MenuItem>
-              <MenuItem value={8}>8</MenuItem>
-              <MenuItem value={9}>9</MenuItem>
-              <MenuItem value={10}>10</MenuItem>
-            </Select>
-          </ThemeProvider>
-        </DialogContent>
-        <DialogActions>
-          <Button style={{ marginTop: "28px",marginBottom:"28px"}} onClick={handleAdd} color="primary">
-            Adicionar ao Carrinho
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div >
+  const handleAdd =()=>{
+    props.setQuantity(quantity)
+    setOpen(false)
+  }
+  
+  return (
+    <Dialog
+      open={open}
+      TransitionComponent={Transition}
+      keepMounted
+      onClose={handleClose}
+    >
+      <DialogTitle><DialogText>Selecione a quantidade desejada</DialogText></DialogTitle>
+      <DialogContent>
+        <ThemeProvider theme={theme}>
+          <Select
+            defaultValue
+            value={quantity}
+            style={{
+              width: "100%",
+              height: "56px",
+              border: "solid 1px #b8b8b8"
+            }}
+            onChange={handleChange}
+
+          >
+            <MenuItem value={1}>1</MenuItem>
+            <MenuItem value={2}>2</MenuItem>
+            <MenuItem value={3}>3</MenuItem>
+            <MenuItem value={4}>4</MenuItem>
+            <MenuItem value={5}>5</MenuItem>
+            <MenuItem value={6}>6</MenuItem>
+            <MenuItem value={7}>7</MenuItem>
+            <MenuItem value={8}>8</MenuItem>
+            <MenuItem value={9}>9</MenuItem>
+            <MenuItem value={10}>10</MenuItem>
+          </Select>
+        </ThemeProvider>
+      </DialogContent>
+      <DialogActions>
+        <Button style={{ marginTop: "28px", marginBottom: "28px" }} onClick={handleAdd} color="primary">
+          Adicionar ao Carrinho
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 }
-const mapStateToProps = (state) => ({
-  restaurantOrder: state.store.restaurantOrder,
-})
-const mapDispatchToProps = (dispatch)=>({ 
-    setOrder: (order) =>  dispatch(setOrder(order))
-  })
-export default connect(mapStateToProps,mapDispatchToProps)(AlertDialogAddItem)
+
+export default AlertDialogAddItem

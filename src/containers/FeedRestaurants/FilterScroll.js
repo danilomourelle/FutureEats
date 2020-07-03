@@ -1,24 +1,48 @@
 import React from 'react'
-import "./ScrollMenu.css"
+import styled from 'styled-components'
+
+const NavBar = styled.nav`
+  width: 100%; 
+`
+const Container = styled.div`
+  margin: 0 auto;
+  padding: 0 10px;
+  width: 100%;
+  white-space: nowrap;  
+`
+const NavList = styled.ul`
+  margin: 0 -10px;
+  padding: 0 10px;
+  list-style: none;
+  display: flex;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+  width: 20px;
+  }
+`
+const ListItem = styled.li`
+  padding: 14px 16px;
+  display: block;
+  color: ${props => props.isSelected ? '#5cb646' : 'black'};
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+`
 
 
 export default function FilterScroll(props) {
-
-    return (
-        <nav class="navBar">
-            <div class="container">
-                <ul class="nav">
-                    <li value="1" onClick={() => props.handleClick("Hamburguer")}>Burger</li>
-                    <li value="2" onClick={() => props.handleClick("Árabe")}>Árabe</li>
-                    <li value="3" onClick={() => props.handleClick("Asiática")}>Asiática</li>
-                    <li value="4" onClick={() => props.handleClick("Mexicana")}>Mexicana</li>
-                    <li value="5" onClick={() => props.handleClick("Baiana")}>Baiana</li>
-                    <li value="6" onClick={() => props.handleClick("Carnes")}>Carnes</li>
-                    <li value="7" onClick={() => props.handleClick("Italiana")}>Massas</li>                    
-                    <li value="8" onClick={() => props.handleClick("Sorvetes")}>Sorvetes</li>
-                    <li value="9" onClick={() => props.handleClick("Petiscos")}>Petiscos</li>
-                </ul>
-            </div>
-        </nav>
-    )
+  const restaurantType = ['Hamburguer', 'Árabe', 'Asiática', 'Mexicana', 'Baiana', 'Carnes', 'Italiana', 'Sorvetes', 'Petiscos']
+  return (
+    <NavBar>
+      <Container>
+        <NavList>
+          {restaurantType.map((type, index) => {
+            return <ListItem key={index} isSelected={props.actualValue === type} onClick={() => props.handleClick(type)}>{type}</ListItem>
+          })}
+        </NavList>
+      </Container>
+    </NavBar>
+  )
 }

@@ -1,57 +1,48 @@
 import React from 'react'
+import styled from 'styled-components'
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 import { routes } from '../Router'
 
-import styled, { keyframes } from 'styled-components'
-import { LogoFutureEats } from '../Autenticacao/style'
-
 const TelaInicial = styled.div`
-  width: 360px;
-  height: 640px;
-  background: #000000;
-`
-const LogoPageWrapper = styled.div`
   width: 100%;
-  padding: 280px 100px;
-  animation: fading 4s
+  height: 100vh;
+  background: #050505;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+const Logo = styled.img`
+  width:70%;
+  max-width:200px;
+  animation: fading 4s;
+  @keyframes fading{
+    0% { opacity: 0 };
+    100% { opacity: 1 };
 }
-@keyframes fading{
-0%{opacity:0}
-100%{opacity:1}
 `
 class FirstPage extends React.Component {
-    constructor(props) {
-        super(props)
 
+  componentDidMount() {
+    setTimeout(
+      () => this.props.goToLogin(),
+      4000
+    );
+  }
 
-    }
-
-    componentDidMount() {
-        this.timerID = setInterval(
-            () => this.props.goToLogin(),
-            4000
-          );
-      }
-
-
-    render() {
-        return (
-            <TelaInicial>
-                <LogoPageWrapper>
-                    <LogoFutureEats src={require("../../images/LogoPage/logo-future-eats.png")} />
-                </LogoPageWrapper>
-            </TelaInicial>
-        );
-    }
+  render() {
+    return (
+      <TelaInicial>
+          <Logo src={require("../../images/LogoPage/logo-future-eats@3x.png")} />
+      </TelaInicial>
+    );
+  }
 }
 
-
 const mapDispatchToProps = dispatch => {
-    return {
-        goToLogin: () => dispatch(push(routes.login)),
-        
-    }
+  return {
+    goToLogin: () => dispatch(push(routes.login)),
+  }
 }
 
 export default connect(null, mapDispatchToProps)(FirstPage);

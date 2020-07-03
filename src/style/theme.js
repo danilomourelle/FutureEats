@@ -6,6 +6,9 @@ export default createMuiTheme({
     primary: { 
       main: "#5cb646",
     },
+    secondary: { 
+      main: "#ffffff",
+    },
     action:{
       disabledBackground:'#aedaa3',
       disabled:'#333'

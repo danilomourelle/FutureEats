@@ -9,15 +9,13 @@ import MyBottonNav from '../../components/material/BottomNav'
 import {
   PageWrapper, ProfileWrapper, AddressWrapper,
   IconWrapper, SubTitle, Divisor, ParagraphWrapper,
-  InfoWrapper
+  InfoWrapper,
+  NoOrderParagraphy
 } from './styles'
 import { getProfile, getOrderHistory } from '../../actions/profile';
 
 
 export class Profile extends React.Component {
-  constructor(props) {
-    super(props)
-  }
 
   componentDidMount() {
     if (localStorage.getItem('token') === null) {
@@ -62,7 +60,7 @@ export class Profile extends React.Component {
             history.map((order, index) => (
               <HystoryUnit key={index} order={order} />
             )) :
-            <p>Você não realizou nenhum pedido</p> :
+            <NoOrderParagraphy>Você não realizou nenhum pedido</NoOrderParagraphy> :
           null
         }
         < MyBottonNav />

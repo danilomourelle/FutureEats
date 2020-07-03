@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { push } from "connected-react-router";
+import { replace } from "connected-react-router";
 import { routes } from "../../containers/Router";
 import { signup } from '../../actions/profile'
 import MyButton from "../../components/material/Button";
@@ -23,11 +23,11 @@ class RegisterPage extends Component {
     }
   }
 
-  componentDidMount() {
+ componentDidMount() {
     if (localStorage.getItem('token') != null) {
       this.props.goToFeed()
     }
-  }
+  } 
 
   handleInputValue = (e) => {
     this.setState({
@@ -58,6 +58,7 @@ class RegisterPage extends Component {
           password: '',
         }
       })
+      this.props.goToAddress()
     }else{
       this.setState({
         passwordNotMatch: true
@@ -123,7 +124,8 @@ class RegisterPage extends Component {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    goToFeed: () => dispatch(push(routes.feedRestaurants)),
+    goToFeed: () => dispatch(replace(routes.feedRestaurants)),
+    goToAddress: () => dispatch(replace(routes.addressregister)),
     signup: (form) => dispatch(signup(form)),
   }
 }

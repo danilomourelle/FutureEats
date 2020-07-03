@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 export const Restaurant = styled.div`
   display:flex;
   flex-direction: column;
@@ -37,7 +38,6 @@ export const ImageLogoRestaurant = styled.img`
   width: 90%;
   height: 120px;
  `
-
 export const RestaurantData = styled.div`
   width:90%;
   height: 120px;
@@ -88,28 +88,28 @@ export const DividerTitle = styled.div`
   margin-top: 16px;
   margin-bottom: 8px;
  `
-export const RestaurantItem = styled.div`
-  margin-top:8px;
+export const Product = styled.div`
+  margin: 8px 16px;
   border-radius: 8px;
   border: solid 1px #b8b8b8;
   display:grid;
   align-self:center;
   font-size: 16px;
-  grid-template-columns: 96px 142px 90px;
+  grid-template-columns: 1fr 1.5fr 1fr;
   grid-template-rows: 33px 48px 31px;
   grid-template-areas:
   "image nome topCounter"
   "image data data"
   "image preço bottomButtom";
  `
-export const RestaurantItemImage = styled.img`
+export const ProductImage = styled.img`
   border-radius: 8px 0px 0px 8px;
-  width: 96px;
-  height: 112px;
+  width: 100%;
+  height:100%;
   object-fit: cover;
   grid-area: image;
  `
-export const RestaurantItemName = styled.div`
+export const ProductName = styled.div`
   width: 167px;
   height: 18px;
   line-height: normal;
@@ -119,7 +119,7 @@ export const RestaurantItemName = styled.div`
   margin-top:18px;
   grid-area:nome;
  `
-export const RestaurantItemIngredients = styled.div`
+export const ProductIngredients = styled.div`
   width: 200px;
   height: 30px;
   font-size: 12px;
@@ -130,7 +130,7 @@ export const RestaurantItemIngredients = styled.div`
   margin-top:8px;
   grid-area:data;
  `
-export const RestaurantItemPrice = styled.div`
+export const ProductPrice = styled.div`
   width: 118px;
   height: 19px;
   line-height: normal;
@@ -140,24 +140,18 @@ export const RestaurantItemPrice = styled.div`
   margin-top:4px;
   grid-area:preço;
 `
-export const RestaurantButtomAddIten = styled.div`
+export const ProductAddRemoveBtn = styled.div`
   width: 91px;
   height: 32px;
+  justify-self: end;
   border-radius: 8px 0px 8px 0px;
-  border: solid 1px #5cb646;
+  border: solid 1px;
+  border-color: ${props => props.remove ? '#e02020': '#5cb646'};
   grid-area: bottomButtom;
   display:flex;
   justify-content:center;
-`
-export const RestaurantButtomAddItenText = styled.div`
-  width: 48px;
-  height: 14px;
-  font-size: 12px;
-  line-height: normal;
-  letter-spacing: -0.29px;
-  text-align: center;
-  align-self:center;
-  color: #5cb646;
+  align-items:center;
+  color: ${props => props.remove ? '#e02020': '#5cb646'};
 `
 export const RestaurantButtomSubIten = styled.div`
   width: 91px;
@@ -186,15 +180,9 @@ export const RestaurantCountItens = styled.div`
   grid-area: topCounter;
   display:flex;
   justify-content:center;
+  align-items: center;
+  color: #5cb646;
   position: relative;
   right: -1px;
   top: -1px;
-`
-export const RestaurantCounterItensText = styled.div`
-  width: 9px;
-  height: 19px;
-  letter-spacing: -0.39px;
-  text-align: center;
-  align-self:center;
-  color: #5cb646;
 `

@@ -36,7 +36,10 @@ const middlewares = [
 
 
 export const GlobalStyle = createGlobalStyle` 
-  body{ } `
+   *{
+     box-sizing: border-box;
+   }
+   `
 
 const store = createStore(generateReducers(history), compose(...middlewares));
 
