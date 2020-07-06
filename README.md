@@ -66,7 +66,7 @@ Para fechar com chave de outro e aplicar essa lista gigantesca, vamos fazer um p
 
 :trophy: Simular o funcionamento de um aplicativo de delivery baseados nos modelos encontrados nos mercado 
 
-:trophy: Aplicação frontend completa estilização __Design System__, __actions__ sincronas e assíncronas, requisições HTTP (API Rest), armazenamento de dados não vulneráveies em ambiente local.
+:trophy: Aplicação frontend completa estilização __Design System__, __actions__ sincronas e assíncronas, requisições HTTP (API Rest), armazenamento de dados não sensíveis em ambiente local.
 
 ### Linguagens e libs utilizadas :books:
 
