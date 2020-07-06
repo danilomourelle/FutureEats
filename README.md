@@ -45,13 +45,13 @@ Desenvolvimento de aplicações completas, incluindo frontend Web com React e ba
 
 Para fechar com chave de outro e aplicar essa lista gigantesca, vamos fazer um projeto que tende a se aproximar ao mundo real. Vocês farão parte de uma equipe (em média com 5 pessoas) e receberão um layout pronto feita por uma design muito experiente: [Camila Mizutani](https://www.linkedin.com/in/camila-mizutani-257495bb/). </p>
 
-### LINGUAGENS
+### Linguagens
 
 * HTML
 * CSS
 * JavaScript
 
-### TECNOLOGIAS/FERRAMENTAS
+### Tecnologias/Ferramentas
 
 * Git
 * BrowserDevTools
@@ -66,7 +66,7 @@ Para fechar com chave de outro e aplicar essa lista gigantesca, vamos fazer um p
 
 :trophy: Simular o funcionamento de um aplicativo de delivery baseados nos modelos encontrados nos mercado 
 
-:trophy: Aplicação frontend completa estilização __Design System__, __actions__ sincronas e assíncronas, requisições HTTP (API Rest), armazenamento de dados não sensíveis em ambiente local.
+:trophy: Aplicação frontend completa estilização *Design System*, *actions* sincronas e assíncronas, requisições HTTP (API Rest), armazenamento de dados não sensíveis em ambiente local.
 
 ### Linguagens e libs utilizadas :books:
 
@@ -82,6 +82,12 @@ Para fechar com chave de outro e aplicar essa lista gigantesca, vamos fazer um p
 - [redux](https://redux.js.org/): versão 4.0.4
 - [redux-thunk](https://www.npmjs.com/package/redux-thunk): versão 2.3.0
 
+### Conhecimentos adquiridos durante o projeto :mortar_board:
+- Animações e estilazação avançada em CSS com *styled components*
+- Renderização baseada em rotas para aplicação *single page*
+- Gerenciamento de informaçãoes em *store* centralizada e conectada
+- Escrita e leitura de dados em banco de dados de forma assícrona
+- Autenticação e Autorização com armazenamento local de dados não sensíveis e criptografados.
 
 ### Como rodar a aplicação :arrow_forward:
 
@@ -112,6 +118,6 @@ Você poderá acessar a aplicação em [localhost:3000](http:localhost:3000)
 
 ### RESULTADO FINAL
 [Site do projeto](http://danilomourelle-futureeats.surge.sh)
-**OBS:** Projeto desenvolvido em __mobile first__, portanto melhor visualizado em telas de smartphones ou utilizado o DevTools do seu browser na ferramenta de responsividade
+**OBS:** Projeto desenvolvido em **mobile first**, portanto melhor visualizado em telas de smartphones ou utilizado o DevTools do seu browser na ferramenta de responsividade
 
 
