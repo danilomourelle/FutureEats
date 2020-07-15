@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { CardRestaurant, InfosContainer } from './style';
 import { makeStyles } from '@material-ui/core/styles';
 import { CardActionArea, CardContent, CardMedia, Typography, } from '@material-ui/core';
+
 import { getRestaurantDetails } from '../../actions/restaurant';
-import { CardRestaurant, InfosContainer } from './style';
 
 const useStyles = makeStyles({
   media: {

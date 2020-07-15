@@ -1,6 +1,6 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
 import { CardOrderProgress, ContentCardOrder, ImgClock } from './style';
+import { Typography } from '@material-ui/core';
 
 const clockImg = require('../../images/clock.svg');
 

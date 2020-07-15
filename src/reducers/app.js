@@ -1,6 +1,9 @@
 const initialState = {
   bottomNavPlace: 'home',
-  dialogOpen: false
+  dialog: {
+    status: false,
+    productId: null,
+  },
 };
 
 const app = (state = initialState, action) => {
@@ -10,10 +13,10 @@ const app = (state = initialState, action) => {
         ...state,
         bottomNavPlace: action.payload.actualPlace,
       };
-    case 'SET_DIALOG_OPEN':
+    case 'SET_DIALOG':
       return {
         ...state,
-        dialogOpen: action.payload.dialog,
+        dialog: action.payload.dialog,
       };
     default:
       return state;

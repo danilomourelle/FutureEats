@@ -27,9 +27,10 @@ class FeedRestaurants extends Component {
   componentDidMount() {
     if (localStorage.getItem('token') === null) {
       this.props.goToLogin();
+    } else {
+      this.props.getActiveOrder();
+      this.props.getRestaurants();
     }
-    this.props.getActiveOrder();
-    this.props.getRestaurants();
   }
 
   componentDidUpdate() {

@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { goBack } from 'connected-react-router';
+import { goBack, push } from 'connected-react-router';
 import { connect } from 'react-redux';
 
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import { routes } from '../../containers/Router';
 
 const Wrapper = styled.div`
   width:100%;
@@ -37,19 +38,28 @@ const PageTitle = styled.h3`
 function MyPageTitle(props) {
   return (
     <Wrapper>
-      {props.showBack && <IconWrapper onClick={props.goBack}>
-        <ArrowBackIosIcon fontSize="small" />
-      </IconWrapper>}
+      {
+        props.showBack &&
+        <IconWrapper onClick={props.goBack}>
+          <ArrowBackIosIcon fontSize="small" />
+        </IconWrapper>
+      }
       <PageTitle>
         {props.pageTitle}
       </PageTitle>
-      {props.showBack && <IconWrapper />}
+      {
+        props.logout &&
+        <IconWrapper onClick={props.goToLogin}>
+          Sair
+        </IconWrapper>
+      }
     </Wrapper>
   );
 }
 
 const mapDispatchToProps = (dispatch) => ({
   goBack: () => dispatch(goBack()),
+  goToLogin: () => dispatch(push(routes.login)),
 });
 
 export default connect(null, mapDispatchToProps)(MyPageTitle);

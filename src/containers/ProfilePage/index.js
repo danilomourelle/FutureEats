@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import { routes } from '../Router';
 import MyPageTitle from '../../components/PageTitle/pageTitleBar';
-import HistoryUnit from '../../components/HistoryUnit/history';
+import HistoryUnit from '../../components/HistoryUnit';
 import MyBottomNav from '../../components/material/BottomNav';
 import {
   PageWrapper, ProfileWrapper, AddressWrapper,
@@ -13,6 +13,7 @@ import {
   NoOrderParagraph,
 } from './styles';
 import { getProfile, getOrderHistory } from '../../actions/profile';
+import { setBottomNav} from '../../actions/app'
 
 class Profile extends React.Component {
   componentDidMount() {
@@ -21,6 +22,7 @@ class Profile extends React.Component {
     } else {
       this.props.profile || this.props.getProfileDetails();
       this.props.history || this.props.getOrdersHistory();
+      this.props.setBottomNav('profile')
     }
   }
 
@@ -41,7 +43,7 @@ class Profile extends React.Component {
     const { profile } = this.props;
     return (
       <PageWrapper>
-        <MyPageTitle pageTitle="Meu perfil" />
+        <MyPageTitle logout pageTitle="Meu perfil" />
         <ProfileWrapper>
           {profile
             && (
@@ -86,6 +88,7 @@ const mapDispatchToProps = (dispatch) => ({
   goToEditAddress: () => dispatch(push(routes.editAddress)),
   getProfileDetails: () => dispatch(getProfile()),
   getOrdersHistory: () => dispatch(getOrderHistory()),
+  setBottomNav: (actualPlace) => dispatch(setBottomNav(actualPlace)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

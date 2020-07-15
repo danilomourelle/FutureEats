@@ -22,6 +22,12 @@ class LoginPage extends Component {
     };
   }
 
+  componentDidMount(){
+    if (localStorage.getItem('token') !== null) {
+      localStorage.removeItem('token')
+    }
+  }
+
   handleInputValue = (e) => {
     const { name, value } = e.target
     this.setState((prevState) => ({

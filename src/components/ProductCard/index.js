@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import * as P from './style';
 import AlertDialogAddItem from '../Dialog';
 import { delOrder, setOrder, updateOrder } from '../../actions/order';
+import { setDialog } from '../../actions/app';
+import { idText } from 'typescript';
 
 class ProductCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       productAddedDetails: undefined,
-      openDialog: false,
     };
   }
 
@@ -35,17 +36,19 @@ class ProductCard extends React.Component {
     }
   }
 
-  openDialog = () => {
-    this.setState({
-      openDialog: true,
-    });
+  handleDialog = (status, id) => {
+    const { product, setDialog } = this.props
+    setDialog({
+      status,
+      productId: id,
+    })
   }
 
   setOrder = (quantity) => {
     const {
       order, restaurantDetails, product, setCurrentOrder, updateCurrentOrder,
     } = this.props;
-    if (order.restaurant.id === restaurantDetails.id) {
+    if (order.restaurant && order.restaurant.id === restaurantDetails.id) {
       updateCurrentOrder({ ...product, quantity });
     } else {
       const { products, ...newRestaurantDetails } = restaurantDetails
@@ -63,7 +66,7 @@ class ProductCard extends React.Component {
   }
 
   render() {
-    const { product } = this.props;
+    const { product, dialog } = this.props;
     const { productAddedDetails } = this.state;
 
     return (
@@ -84,13 +87,20 @@ class ProductCard extends React.Component {
             )
             : (
               <>
-                <P.ProductAddRemoveBtn onClick={this.openDialog}>
+                <P.ProductAddRemoveBtn onClick={() => this.handleDialog(true, product.id)}>
                   Adicionar
                 </P.ProductAddRemoveBtn>
               </>
             )
         }
-        {this.state.openDialog && <AlertDialogAddItem setQuantity={this.setOrder} />}
+        {
+          (dialog.status && dialog.productId === product.id) &&
+          <AlertDialogAddItem
+            product={product}
+            setQuantity={this.setOrder}
+            handleDialog={this.handleDialog}
+          />
+        }
       </P.Product>
     );
   }
@@ -99,12 +109,14 @@ class ProductCard extends React.Component {
 const mapStateToProps = (state) => ({
   restaurantDetails: state.restaurant.restaurantDetails,
   order: state.order.currentOrder,
+  dialog: state.app.dialog,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   deleteOrder: (productId) => dispatch(delOrder(productId)),
   setCurrentOrder: (order) => dispatch(setOrder(order)),
   updateCurrentOrder: (productId) => dispatch(updateOrder(productId)),
+  setDialog: (status) => dispatch(setDialog(status)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductCard);

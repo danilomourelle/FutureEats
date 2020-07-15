@@ -52,6 +52,15 @@ class MyBottomNav extends React.Component {
     this.setState({
       value: this.props.place,
     });
+    console.log('mount')
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.place !== this.props.place) {
+      this.setState({
+        value: this.props.place,
+      });
+    }
+    console.log('update')
   }
 
   onNavChange = (e, newValue) => {
@@ -79,6 +88,7 @@ class MyBottomNav extends React.Component {
   }
 
   render() {
+    console.log('render')
     return (
       <Wrapper>
         <BottomNavigation value={this.state.value} onChange={this.onNavChange}>

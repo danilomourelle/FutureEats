@@ -1,5 +1,6 @@
 const initialState = {
   currentOrder: {
+    restaurant: null,
     products: [],
   },
   activeOrder: null,
@@ -16,15 +17,15 @@ const order = (state = initialState, action) => {
       return {
         ...state,
         currentOrder: {
-          ...state.restaurant,
+          ...state.currentOrder,
           products: [...state.currentOrder.products, action.payload.product],
-        },
-      };
+      }
+    };
     case 'DEL_ORDER':
       return {
         ...state,
         currentOrder: {
-          ...state.restaurant,
+          ...state.currentOrder,
           products: state.currentOrder.products.filter((product) => product.id !== action.payload.productId),
         },
       };

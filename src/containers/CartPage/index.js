@@ -15,6 +15,7 @@ import { getProfile } from '../../actions/profile';
 import { placeOrder } from '../../actions/order';
 import ProductCard from '../../components/ProductCard';
 import MyButton from '../../components/material/Button';
+import { setBottomNav} from '../../actions/app'
 
 const GreenRadio = withStyles({
   root: {
@@ -37,13 +38,10 @@ class CartPage extends Component {
   componentDidMount() {
     if (localStorage.getItem('token') === null) {
       this.props.goToLogin();
+    } else{
+      this.props.profile || this.props.getProfileDetails();
+      this.props.setBottomNav('cart')
     }
-    if (this.props.order.products.length > 0) {
-      const { restaurantId } = this.props.restaurantOrder[0];
-      this.props.fetchRestaurant(restaurantId);
-    }
-    // this.props.getOrder()
-    this.props.getProfileDetails();
   }
 
   handleChangePaymentMethod = (event) => {
@@ -54,7 +52,7 @@ class CartPage extends Component {
 
   handleSendOrder = (event) => {
     event.preventDefault();
-    this.props.placeOrder(this.state.paymentMethod, this.props.restaurantOrder);
+    this.props.placeOrder(this.state.paymentMethod, this.props.order);
   }
 
   render() {
@@ -140,7 +138,7 @@ class CartPage extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  order: state.order.order,
+  order: state.order.currentOrder,
   profile: state.profile.profileDetails,
 });
 
@@ -148,6 +146,7 @@ const mapDispatchToProps = (dispatch) => ({
   goToLogin: () => dispatch(push(routes.login)),
   getProfileDetails: () => dispatch(getProfile()),
   placeOrder: (paymentMethod, orders) => dispatch(placeOrder(paymentMethod, orders)),
+  setBottomNav: (actualPlace) => dispatch(setBottomNav(actualPlace)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartPage);

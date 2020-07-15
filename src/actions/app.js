@@ -7,9 +7,9 @@ export const setBottomNav = (actualPlace) => (
   }
 );
 
-export const setDialog = (status) => (
+export const setDialog = (dialog) => (
   {
-    type: 'SET_DIALOG_OPEN',
-    payload: { dialog: status },
+    type: 'SET_DIALOG',
+    payload: { dialog },
   }
 );
