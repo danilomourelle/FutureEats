@@ -1,46 +1,57 @@
-import React from 'react'
-import { push } from "connected-react-router";
-import { connect } from "react-redux";
-import { routes } from "../../containers/Router";
+import React from 'react';
+import { push } from 'connected-react-router';
+import { connect } from 'react-redux';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
-import { MyPageTitle } from '../../components/pageTitleBar';
-import HystoryUnit from '../../components/history';
-import MyBottonNav from '../../components/material/BottomNav'
+import { routes } from '../Router';
+import MyPageTitle from '../../components/PageTitle/pageTitleBar';
+import HistoryUnit from '../../components/HistoryUnit/history';
+import MyBottomNav from '../../components/material/BottomNav';
 import {
   PageWrapper, ProfileWrapper, AddressWrapper,
   IconWrapper, SubTitle, Divisor, ParagraphWrapper,
   InfoWrapper,
-  NoOrderParagraphy
-} from './styles'
+  NoOrderParagraph,
+} from './styles';
 import { getProfile, getOrderHistory } from '../../actions/profile';
 
-
-export class Profile extends React.Component {
-
+class Profile extends React.Component {
   componentDidMount() {
     if (localStorage.getItem('token') === null) {
-      this.props.goToLogin()
-    }
-    else {
-      this.props.profile || this.props.getProfileDetails()
-      this.props.history || this.props.getOrdersHistory()
+      this.props.goToLogin();
+    } else {
+      this.props.profile || this.props.getProfileDetails();
+      this.props.history || this.props.getOrdersHistory();
     }
   }
 
+  handleHistory = () => {
+    const { history } = this.props;
+    if (history) {
+      if (history.length > 0) {
+        return history.map((order, index) => (
+          <HistoryUnit key={index} order={order} />
+        ));
+      }
+      return <NoOrderParagraph>Você não realizou nenhum pedido</NoOrderParagraph>;
+    }
+    return null;
+  }
+
   render() {
-    const { profile, history } = this.props
+    const { profile } = this.props;
     return (
       <PageWrapper>
-        <MyPageTitle pageTitle='Meu perfil' />
+        <MyPageTitle pageTitle="Meu perfil" />
         <ProfileWrapper>
-          {profile &&
-            <InfoWrapper>
-              <p>{profile.name}</p>
-              <p>{profile.email}</p>
-              <p>{profile.cpf}</p>
-            </InfoWrapper>
-          }
-          <span onClick={this.props.goToEditProfile}>
+          {profile
+            && (
+              <InfoWrapper>
+                <p>{profile.name}</p>
+                <p>{profile.email}</p>
+                <p>{profile.cpf}</p>
+              </InfoWrapper>
+            )}
+          <span role="button" tabIndex="0" onClick={this.props.goToEditProfile}>
             <EditOutlinedIcon />
           </span>
         </ProfileWrapper>
@@ -54,32 +65,27 @@ export class Profile extends React.Component {
           </IconWrapper>
         </AddressWrapper>
         <SubTitle>Histórico de pedidos</SubTitle>
-        <Divisor> <hr /> </Divisor>
-        {history ?
-          history.length > 0 ?
-            history.map((order, index) => (
-              <HystoryUnit key={index} order={order} />
-            )) :
-            <NoOrderParagraphy>Você não realizou nenhum pedido</NoOrderParagraphy> :
-          null
-        }
-        < MyBottonNav />
-      </PageWrapper >
-    )
+        <Divisor>
+          <hr />
+        </Divisor>
+        {this.handleHistory()}
+        <MyBottomNav />
+      </PageWrapper>
+    );
   }
 }
 
 const mapStateToProps = (state) => ({
   profile: state.profile.profileDetails,
-  history: state.profile.profileOrderHistory
-})
+  history: state.profile.profileOrderHistory,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   goToLogin: () => dispatch(push(routes.login)),
   goToEditProfile: () => dispatch(push(routes.editProfile)),
   goToEditAddress: () => dispatch(push(routes.editAddress)),
   getProfileDetails: () => dispatch(getProfile()),
-  getOrdersHistory: () => dispatch(getOrderHistory())
-})
+  getOrdersHistory: () => dispatch(getOrderHistory()),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

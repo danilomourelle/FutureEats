@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
-import { routes } from '../Router';
+import { routes } from '../Router/index';
 
 const logo = require('../../images/LogoPage/logo-future-eats@3x.png');
 

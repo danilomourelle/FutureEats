@@ -5,7 +5,7 @@ import { routes } from '../Router';
 import { signup } from '../../actions/profile';
 import MyButton from '../../components/material/Button';
 import { MyInput, MyPasswordInput } from '../../components/material/Inputs';
-import MyPageTitle from '../../components/pageTitleBar';
+import MyPageTitle from '../../components/PageTitle/pageTitleBar';
 import { PageWrapper, FormStyle, LogoFutureEats } from './style';
 
 const logo = require('../../images/LogoPage/logo-future-eats-invert.png');

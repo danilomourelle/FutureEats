@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 import { MyInput } from '../../components/material/Inputs';
 import MyButton from '../../components/material/Button';
-import MyPageTitle from '../../components/pageTitleBar';
+import MyPageTitle from '../../components/PageTitle/pageTitleBar';
 import { PageWrapper, FormStyle } from './style';
 import { routes } from '../Router';
 import { addressRegisterModifications } from '../../actions/profile';

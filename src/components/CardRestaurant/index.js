@@ -1,35 +1,29 @@
 import React from 'react';
-import { CardRestaurant, InfosContainer } from './styles'
-
 import { connect } from 'react-redux';
-import { goToRestaurantDetail } from '../../actions/GetRestaurantDetailsAction';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core';
-
+import { CardActionArea, CardContent, CardMedia, Typography, } from '@material-ui/core';
+import { getRestaurantDetails } from '../../actions/restaurant';
+import { CardRestaurant, InfosContainer } from './style';
 
 const useStyles = makeStyles({
-  root: {
-    // maxWidth: 345,
-  },
   media: {
     height: 140,
-
   },
 });
 
 function CardsRestaurants(props) {
   const classes = useStyles();
-  const { restaurant } = props
+  const { restaurant } = props;
 
-  const handdleOpenRestaurant = () => {
+  const handleOpenRestaurant = () => {
     if (!props.activeOrder) {
-      props.goToRestaurantDetail(restaurant.id)
+      props.goToRestaurantDetail(restaurant.id);
     }
-  }
+  };
   return (
-    <CardRestaurant className={classes.root} key={restaurant.id}>
-      <div onClick={handdleOpenRestaurant}>
+    <CardRestaurant key={restaurant.id}>
+      <div role="button" tabIndex="0" onClick={handleOpenRestaurant}>
         <CardActionArea>
           <CardMedia
             className={classes.media}
@@ -42,10 +36,10 @@ function CardsRestaurants(props) {
             </Typography>
             <InfosContainer>
               <Typography variant="body2" color="textSecondary" component="p">
-                {restaurant.deliveryTime + " min"}
+                {`${restaurant.deliveryTime} min`}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                {"Frete R$" + restaurant.shipping.toFixed(2)}
+                {`Frete R$${restaurant.shipping.toFixed(2)}`}
               </Typography>
             </InfosContainer>
           </CardContent>
@@ -55,18 +49,12 @@ function CardsRestaurants(props) {
   );
 }
 
+const mapStateToProps = (state) => ({
+  activeOrder: state.order.activeOrder,
+});
 
-const mapStateToProps = (state) => {
-  return {
-    restaurantList: state.store.restaurantList,
-    activeOrder: state.store.activeOrder
-  }
-};
+const mapDispatchToProps = (dispatch) => ({
+  goToRestaurantDetail: (id) => dispatch(getRestaurantDetails(id)),
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    goToRestaurantDetail: (id) => dispatch(goToRestaurantDetail(id))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CardsRestaurants)
+export default connect(mapStateToProps, mapDispatchToProps)(CardsRestaurants);

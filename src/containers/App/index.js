@@ -15,7 +15,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'connected-react-router';
 import { createGlobalStyle } from 'styled-components';
 import { generateReducers } from '../../reducers';
-import Router from '../Router';
+import Router from '../Router/index';
 import theme from '../../style/theme';
 
 const generateClassName = createGenerateClassName();

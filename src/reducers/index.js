@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
-import store from './store';
 import profile from './profile';
 import restaurant from './restaurant';
 import order from './order';
