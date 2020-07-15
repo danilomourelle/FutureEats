@@ -37,13 +37,13 @@ const PageTitle = styled.h3`
 function MyPageTitle(props) {
   return (
     <Wrapper>
-      <IconWrapper onClick={props.goBack}>
-        {props.showBack && <ArrowBackIosIcon fontSize="small" />}
-      </IconWrapper>
+      {props.showBack && <IconWrapper onClick={props.goBack}>
+        <ArrowBackIosIcon fontSize="small" />
+      </IconWrapper>}
       <PageTitle>
         {props.pageTitle}
       </PageTitle>
-      <IconWrapper />
+      {props.showBack && <IconWrapper />}
     </Wrapper>
   );
 }
