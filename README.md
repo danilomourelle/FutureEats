@@ -108,7 +108,8 @@ Execute a aplicação
 ```
 npm start
 ```
-Você poderá acessar a aplicação em [localhost:3000](http:localhost:3000)
+Você poderá acessar a aplicação em [localhost:3000](http:localhost:3000) <br>
+\* Evite uso do gerenciador de pacote **yarn** - incompatibilidade com algumas bibliotecas
 
 **Projeto inicialmente desenvolvido em 14/02/2020 [neste Repo](https://github.com/future4code/sagan-whats4-grupo1) em parceria com:**
 * [Dennis Alves](https://github.com/DennisAlves)
