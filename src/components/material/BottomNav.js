@@ -92,7 +92,7 @@ class MyBottomNav extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  place: state.profile.bottomNavPlace,
+  place: state.app.bottomNavPlace,
 });
 const mapDispatchToProps = (dispatch) => ({
   goToHomePage: () => dispatch(push(routes.feedRestaurants)),
