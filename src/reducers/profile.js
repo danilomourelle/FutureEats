@@ -1,35 +1,29 @@
 const initialState = {
-  profileDetails: undefined,
-  profileFullAddress: undefined,
-  profileOrderHistory: undefined,
-  bottomNavPlace:'home'
-}
+  profileDetails: null,
+  profileFullAddress: null,
+  profileOrderHistory: null,
+};
 
-const profileReducer = (state = initialState, action) => {    
+const profile = (state = initialState, action) => {
   switch (action.type) {
-      case 'SET_PROFILE_DETAILS':                    
-          return {
-              ...state,
-              profileDetails: action.payload.profileDetails
-          }
-      case 'SET_PROFILE_FULL_ADDRESS':
-          return {
-              ...state,
-              profileFullAddress: action.payload.profileFullAddress
-          }
-      case 'SET_ORDER_HISTORY':
-          return {
-              ...state,
-              profileOrderHistory: action.payload.orderHistory
-          }
-      case 'SET_BOTTOM_NAV_PLACE':
-          return {
-              ...state,
-              bottomNavPlace: action.payload.actualPlace
-          }
-      default:
-          return state;
+    case 'SET_PROFILE_DETAILS':
+      return {
+        ...state,
+        profileDetails: action.payload.profileDetails,
+      };
+    case 'SET_PROFILE_FULL_ADDRESS':
+      return {
+        ...state,
+        profileFullAddress: action.payload.profileFullAddress,
+      };
+    case 'SET_PROFILE_ORDER_HISTORY':
+      return {
+        ...state,
+        profileOrderHistory: action.payload.orderHistory,
+      };
+    default:
+      return state;
   }
-}
+};
 
-export default profileReducer;
+export default profile;

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const PageWrapper = styled.div`
   width: 100%;
@@ -7,13 +7,13 @@ export const PageWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-`
+`;
 export const FormStyle = styled.form`
   width: 100%;
-`
+`;
 export const LogoFutureEats = styled.img`
   padding: 15px;
-`
+`;
 export const Text = styled.p`
   width:100%;
   padding: 0 16px;
@@ -23,4 +23,4 @@ export const Text = styled.p`
     font-weight:bold;
     cursor: pointer;
   }
-`
+`;

@@ -1,43 +1,40 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { goBack, push } from 'connected-react-router'
-import { routes } from "../../containers/Router";
+import React from 'react';
+import { connect } from 'react-redux';
+import { goBack, push } from 'connected-react-router';
+import { PageWrapper } from './styles';
+import MyButton from '../../components/material/Button';
+import { MyInput } from '../../components/material/Inputs';
+import MyPageTitle from '../../components/PageTitle/pageTitleBar';
+import { routes } from '../Router';
+import { getFullAddress, addressRegisterModifications } from '../../actions/profile';
 
-import MyButton from '../../components/material/Button'
-import { MyInput } from '../../components/material/Inputs'
-import MyPageTitle from '../../components/pageTitleBar'
 
-import { getFullAddress, addressRegisterModifications } from '../../actions/profile'
-
-import { PageWrapper } from './styles'
-
-export class AddressEdit extends React.Component {
+class AddressEdit extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       form: {
         street: '',
         number: '',
-        neighbourhood: '',
+        neighborhood: '',
         city: '',
         state: '',
-        complement: ''
-      }
-    }
+        complement: '',
+      },
+    };
   }
 
   componentDidMount() {
     if (localStorage.getItem('token') === null) {
-      this.props.goToLogin()
-    }
-    else {
-      this.props.getFullAddress()
+      this.props.goToLogin();
+    } else {
+      this.props.getFullAddress();
     }
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.address !== prevProps.address) {
-      const { address } = this.props
+      const { address } = this.props;
       this.setState({
         form: {
           street: address.street,
@@ -45,99 +42,99 @@ export class AddressEdit extends React.Component {
           neighbourhood: address.neighbourhood,
           city: address.city,
           state: address.state,
-          complement: address.complement || ''
-        }
-      })
+          complement: address.complement || '',
+        },
+      });
     }
   }
 
   handleInputChange = (e) => {
-    this.setState({
+    const { name, value } = e.target
+    this.setState((prevState) => ({
       form: {
-        ...this.state.form,
-        [e.target.name]: e.target.value
-      }
-    })
+        ...prevState.form,
+        [name]: value,
+      },
+    }));
   }
 
   handleSubmit = (e) => {
-    e.preventDefault()
-    this.props.updateAddress(this.state.form)
+    e.preventDefault();
+    this.props.updateAddress(this.state.form);
   }
-
 
   render() {
     return (
       <PageWrapper>
-        <MyPageTitle showBack pageTitle='Endereço' />
+        <MyPageTitle showBack pageTitle="Endereço" />
         <form onSubmit={this.handleSubmit}>
           <MyInput
-            label='Logradouro'
-            name='street'
-            type='text'
+            label="Logradouro"
+            name="street"
+            type="text"
             required
-            placeholder='Rua / Av.'
+            placeholder="Rua / Av."
             value={this.state.form.street}
             onChange={this.handleInputChange}
           />
           <MyInput
-            label='Número'
-            name='number'
-            type='text'
+            label="Número"
+            name="number"
+            type="text"
             required
-            placeholder='Número'
+            placeholder="Número"
             value={this.state.form.number}
             onChange={this.handleInputChange}
           />
           <MyInput
-            label='Complemento'
-            name='complement'
-            type='text'
-            placeholder='Complemento'
+            label="Complemento"
+            name="complement"
+            type="text"
+            placeholder="Complemento"
             value={this.state.form.complement}
             onChange={this.handleInputChange}
           />
           <MyInput
-            label='Bairro'
-            name='neighbourhood'
-            type='text'
+            label="Bairro"
+            name="neighbourhood"
+            type="text"
             required
-            placeholder='Bairro'
+            placeholder="Bairro"
             value={this.state.form.neighbourhood}
             onChange={this.handleInputChange}
           />
           <MyInput
-            label='Cidade'
-            name='city'
-            type='text'
+            label="Cidade"
+            name="city"
+            type="text"
             required
-            placeholder='Cidade'
+            placeholder="Cidade"
             value={this.state.form.city}
             onChange={this.handleInputChange}
           />
           <MyInput
-            label='Estado'
-            name='state'
-            type='text'
+            label="Estado"
+            name="state"
+            type="text"
             required
-            placeholder='Estado'
+            placeholder="Estado"
             value={this.state.form.state}
             onChange={this.handleInputChange}
           />
-          <MyButton btnText='Salvar' />
+          <MyButton btnText="Salvar" />
         </form>
       </PageWrapper>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => ({
-  address: state.profile.profileFullAddress
-})
+  address: state.profile.profileFullAddress,
+});
 const masDispatchToProps = (dispatch) => ({
   goToLogin: () => dispatch(push(routes.login)),
   goBack: () => dispatch(goBack()),
   getFullAddress: () => dispatch(getFullAddress()),
-  updateAddress:(form) =>dispatch(addressRegisterModifications(form))
-})
-export default connect(mapStateToProps, masDispatchToProps)(AddressEdit)
+  updateAddress: (form) => dispatch(addressRegisterModifications(form)),
+});
+export default connect(mapStateToProps, masDispatchToProps)(AddressEdit);

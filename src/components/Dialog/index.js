@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -8,8 +10,6 @@ import Slide from '@material-ui/core/Slide';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import styled from 'styled-components';
-
 
 const DialogText = styled.div`
   height: 18px;
@@ -51,26 +51,23 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 function AlertDialogAddItem(props) {
   const [quantity, setQtde] = React.useState(1);
-  const [open, setOpen] = React.useState(true);
+  const dialog = useSelector(state => state.app.dialog)
 
   const handleChange = (event) => {
-    if (event.target.value > 0) {
-      setQtde(event.target.value);
-    }
+    setQtde(event.target.value);
   };
 
   const handleClose = () => {
-    setOpen(false);
+    props.handleDialog(false, null)
   };
 
-  const handleAdd =()=>{
+  const handleAdd = () => {
     props.setQuantity(quantity)
-    setOpen(false)
+    handleClose()
   }
-  
   return (
     <Dialog
-      open={open}
+      open={dialog.status && dialog.productId === props.product.id}
       TransitionComponent={Transition}
       keepMounted
       onClose={handleClose}
@@ -79,7 +76,6 @@ function AlertDialogAddItem(props) {
       <DialogContent>
         <ThemeProvider theme={theme}>
           <Select
-            defaultValue
             value={quantity}
             style={{
               width: "100%",
@@ -87,7 +83,6 @@ function AlertDialogAddItem(props) {
               border: "solid 1px #b8b8b8"
             }}
             onChange={handleChange}
-
           >
             <MenuItem value={1}>1</MenuItem>
             <MenuItem value={2}>2</MenuItem>

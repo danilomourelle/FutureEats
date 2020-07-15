@@ -1,53 +1,62 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
-import { routes } from '../Router'
-import { login } from '../../actions/profile'
-import MyButton from "../../components/material/Button";
-import { MyPasswordInput, MyInput } from "../../components/material/Inputs";
-import { PageWrapper, FormStyle, LogoFutureEats, Text } from "./style";
+import { PageWrapper, FormStyle, LogoFutureEats, Text, } from './style';
+import MyButton from '../../components/material/Button';
+import { MyPasswordInput, MyInput } from '../../components/material/Inputs';
+import { routes } from '../Router';
+import { login } from '../../actions/profile';
+
+const logo = require('../../images/LogoPage/logo-future-eats-invert.png');
 
 class LoginPage extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       form: {
         password: '',
         email: '',
-      }
+      },
+    };
+  }
+
+  componentDidMount() {
+    if (localStorage.getItem('token') !== null) {
+      localStorage.removeItem('token')
     }
   }
 
   handleInputValue = (e) => {
-    this.setState({
+    const { name, value } = e.target
+    this.setState((prevState) => ({
       form: {
-        ...this.state.form,
-        [e.target.name]: e.target.value
-      }
-    })
+        ...prevState.form,
+        [name]: value,
+      },
+    }));
   }
 
   handleSubmit = (e) => {
-    e.preventDefault()
-    const { form } = this.state
-    this.props.login(form)
+    e.preventDefault();
+    const { form } = this.state;
+    this.props.login(form);
     this.setState({
       form: {
         password: '',
         email: '',
-      }
-    })
+      },
+    });
   }
 
   handleSignUp = () => {
-    window.localStorage.removeItem("token")
-    this.props.goToRegisterPage()
+    window.localStorage.removeItem('token');
+    this.props.goToRegisterPage();
   }
 
   render() {
     return (
       <PageWrapper>
-        <LogoFutureEats src={require("../../images/LogoPage/logo-future-eats-invert.png")} />
+        <LogoFutureEats src={logo} />
         <h3>Entrar</h3>
         <FormStyle onSubmit={this.handleSubmit}>
           <MyInput
@@ -55,31 +64,33 @@ class LoginPage extends Component {
             type="email"
             label="Email"
             placeholder="email@email.com"
-            required={true}
+            required
             onChange={this.handleInputValue}
-            value={this.state.form.email} />
+            value={this.state.form.email}
+          />
           <MyPasswordInput
             name="password"
             id="password"
             label="Senha"
             placeholder="Mínimo 6 caracteres"
-            required={true}
+            required
             onChange={this.handleInputValue}
             value={this.state.form.password}
           />
           <MyButton btnText="Entrar" />
         </FormStyle>
-        <Text>Não possui cadastro? <span onClick={this.handleSignUp}>Clique aqui</span></Text>
+        <Text>
+          Não possui cadastro?
+          <span role="button" tabIndex="0" onClick={this.handleSignUp}> Clique aqui</span>
+        </Text>
       </PageWrapper>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    goToRegisterPage: () => dispatch(push(routes.register)),
-    login: (form) => dispatch(login(form)),
-  }
-}
+const mapDispatchToProps = (dispatch) => ({
+  goToRegisterPage: () => dispatch(push(routes.register)),
+  login: (form) => dispatch(login(form)),
+});
 
 export default connect(null, mapDispatchToProps)(LoginPage);

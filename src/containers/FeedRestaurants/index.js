@@ -1,105 +1,102 @@
 import React, { Component } from 'react';
-import MyPageTitle from '../../components/pageTitleBar';
-import MyBottonNav from '../../components/material/BottomNav';
-import { MainWrapper, InputSearch, CardsWrapper, FilterWrapper } from './styles'
-import FilterScroll from './FilterScroll';
-import { push } from "connected-react-router";
-import { routes } from '../Router';
+import { push } from 'connected-react-router';
 import { connect } from 'react-redux';
-import { getRestaurants } from '../../actions/GetRestaurantsAction';
+import {
+  MainWrapper, InputSearch, CardsWrapper, FilterWrapper,
+} from './styles';
 import { InputAdornment } from '@material-ui/core';
-
 import SearchIcon from '@material-ui/icons/Search';
-import CardsRestaurants from './CardsRestaurants';
-import CardOrder from './CardOrderProgress';
-import { getActiveOrder, setActiveOrder, setOrder} from '../../actions/Order';
+import MyPageTitle from '../../components/PageTitle/pageTitleBar';
+import MyBottomNav from '../../components/material/BottomNav';
+import FilterScroll from '../../components/FilterScroll';
+import CardsRestaurants from '../../components/CardRestaurant'
+import CardOrder from '../../components/CardOrderActive';
+import { routes } from '../Router';
+import { getActiveOrder, setActiveOrder, setOrder } from '../../actions/order';
+import { getRestaurants } from '../../actions/restaurant';
 
 class FeedRestaurants extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      actualValue: ""
-    }
+      actualValue: '',
+    };
   }
 
   componentDidMount() {
     if (localStorage.getItem('token') === null) {
-      this.props.goToLogin()
+      this.props.goToLogin();
+    } else {
+      this.props.getActiveOrder();
+      this.props.getRestaurants();
     }
-    this.props.getActiveOrder()
-    this.props.getRestaurants()    
   }
 
-  componentDidUpdate(){   
-      if(this.props.activeOrder){
-        const expiresTime = this.props.activeOrder.expiresAt -  Date.now()
-        setTimeout(this.handleOrderOver, expiresTime)
-      }     
+  componentDidUpdate() {
+    if (this.props.activeOrder) {
+      const expiresTime = this.props.activeOrder.expiresAt - Date.now();
+      setTimeout(this.handleOrderOver, expiresTime);
+    }
   }
 
   handleOrderOver = () => {
-    this.props.setActiveOrderNull(null)
+    this.props.setActiveOrderNull(null);
   }
 
   handleFilterClick = (valorAlterado) => {
     if (valorAlterado === this.state.actualValue) {
-      this.setState({ actualValue: "" })
+      this.setState({ actualValue: '' });
     } else {
-      this.setState({ actualValue: valorAlterado })
+      this.setState({ actualValue: valorAlterado });
     }
   }
 
-  render(){
+  render() {
     return (
       <MainWrapper>
-        <MyPageTitle pageTitle={"FutureEats"} />
+        <MyPageTitle pageTitle="FutureEats" />
         <InputSearch
           id="input-with-icon-adornment"
           onClick={() => this.props.goToSearch()}
           placeholder="Restaurante"
-          startAdornment={
+          startAdornment={(
             <InputAdornment position="start">
               <SearchIcon />
             </InputAdornment>
-          }
+          )}
         />
         <FilterWrapper>
           <FilterScroll handleClick={this.handleFilterClick} actualValue={this.state.actualValue} />
         </FilterWrapper>
         <CardsWrapper>
           {this.props.restaurantList
-            .filter(restaurant => {
-              return this.state.actualValue ? restaurant.category === this.state.actualValue
-                : true
-            }).map(restaurant => {
-              return (
-                <CardsRestaurants key={restaurant.id} restaurant={restaurant} />
-              )
-            })}
-        </CardsWrapper>            
-        {this.props.activeOrder && <CardOrder activeOrder={this.props.activeOrder}/>}   
-        <MyBottonNav />
+            .filter((restaurant) => (
+              this.state.actualValue
+                ? restaurant.category === this.state.actualValue
+                : true))
+            .map((restaurant) => (
+              <CardsRestaurants key={restaurant.id} restaurant={restaurant} />
+            ))}
+        </CardsWrapper>
+        {this.props.activeOrder && <CardOrder activeOrder={this.props.activeOrder} />}
+        <MyBottomNav />
       </MainWrapper>
-    )
+    );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    restaurantList: state.store.restaurantList,
-    activeOrder: state.store.activeOrder
-  }
-};
+const mapStateToProps = (state) => ({
+  restaurantList: state.restaurant.restaurantList,
+  activeOrder: state.order.activeOrder,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setActiveOrderNull: (order) => dispatch(setActiveOrder(order)),
-    getActiveOrder: () => dispatch(getActiveOrder()),
-    setOrder: (order) => dispatch(setOrder(order)),
-    getRestaurants: () => dispatch(getRestaurants()),
-    goToLogin: () => dispatch(push(routes.login)),
-    goToSearch: () => dispatch(push(routes.inputSearch))
-  }
-};
+const mapDispatchToProps = (dispatch) => ({
+  setActiveOrderNull: (order) => dispatch(setActiveOrder(order)),
+  getActiveOrder: () => dispatch(getActiveOrder()),
+  setOrder: (order) => dispatch(setOrder(order)),
+  getRestaurants: () => dispatch(getRestaurants()),
+  goToLogin: () => dispatch(push(routes.login)),
+  goToSearch: () => dispatch(push(routes.inputSearch)),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(FeedRestaurants)
+export default connect(mapStateToProps, mapDispatchToProps)(FeedRestaurants);
