@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Divider } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 import * as RPS from './style';
-import { routes } from '../Router';
+import { Divider } from '@material-ui/core';
 import MyPageTitle from '../../components/PageTitle/pageTitleBar';
-import { delOrder } from '../../actions/order';
 import ProductCard from '../../components/ProductCard'
+import { routes } from '../Router';
+import { delOrder } from '../../actions/order';
 
 class RestaurantPage extends Component {
   componentDidMount() {

@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { push } from 'connected-react-router';
 import { connect } from 'react-redux';
-
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import SvgIcon from '@material-ui/core/SvgIcon';
@@ -52,7 +51,6 @@ class MyBottomNav extends React.Component {
     this.setState({
       value: this.props.place,
     });
-    console.log('mount')
   }
   componentDidUpdate(prevProps) {
     if (prevProps.place !== this.props.place) {
@@ -60,7 +58,6 @@ class MyBottomNav extends React.Component {
         value: this.props.place,
       });
     }
-    console.log('update')
   }
 
   onNavChange = (e, newValue) => {
@@ -88,7 +85,6 @@ class MyBottomNav extends React.Component {
   }
 
   render() {
-    console.log('render')
     return (
       <Wrapper>
         <BottomNavigation value={this.state.value} onChange={this.onNavChange}>

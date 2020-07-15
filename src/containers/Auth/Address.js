@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
+import { PageWrapper, FormStyle } from './style';
 import { MyInput } from '../../components/material/Inputs';
 import MyButton from '../../components/material/Button';
 import MyPageTitle from '../../components/PageTitle/pageTitleBar';
-import { PageWrapper, FormStyle } from './style';
 import { routes } from '../Router';
 import { addressRegisterModifications } from '../../actions/profile';
 

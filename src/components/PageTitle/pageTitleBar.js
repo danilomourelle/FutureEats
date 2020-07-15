@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { goBack, push } from 'connected-react-router';
 import { connect } from 'react-redux';
-
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { routes } from '../../containers/Router';
 

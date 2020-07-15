@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { replace } from 'connected-react-router';
-import { routes } from '../Router';
-import { signup } from '../../actions/profile';
+import { PageWrapper, FormStyle, LogoFutureEats } from './style';
 import MyButton from '../../components/material/Button';
 import { MyInput, MyPasswordInput } from '../../components/material/Inputs';
 import MyPageTitle from '../../components/PageTitle/pageTitleBar';
-import { PageWrapper, FormStyle, LogoFutureEats } from './style';
+import { routes } from '../Router';
+import { signup } from '../../actions/profile';
 
 const logo = require('../../images/LogoPage/logo-future-eats-invert.png');
 

@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import { push } from 'connected-react-router';
 import { connect } from 'react-redux';
+import {
+  MainWrapper, InputSearch, CardsWrapper, FilterWrapper,
+} from './styles';
 import { InputAdornment } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import MyPageTitle from '../../components/PageTitle/pageTitleBar';
 import MyBottomNav from '../../components/material/BottomNav';
-import {
-  MainWrapper, InputSearch, CardsWrapper, FilterWrapper,
-} from './styles';
 import FilterScroll from '../../components/FilterScroll';
-import { routes } from '../Router';
-import { getRestaurants } from '../../actions/restaurant';
-
 import CardsRestaurants from '../../components/CardRestaurant'
 import CardOrder from '../../components/CardOrderActive';
+import { routes } from '../Router';
 import { getActiveOrder, setActiveOrder, setOrder } from '../../actions/order';
+import { getRestaurants } from '../../actions/restaurant';
 
 class FeedRestaurants extends Component {
   constructor(props) {

@@ -4,7 +4,6 @@ import * as P from './style';
 import AlertDialogAddItem from '../Dialog';
 import { delOrder, setOrder, updateOrder } from '../../actions/order';
 import { setDialog } from '../../actions/app';
-import { idText } from 'typescript';
 
 class ProductCard extends React.Component {
   constructor(props) {

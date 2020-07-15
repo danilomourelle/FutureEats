@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
-import { withStyles } from '@material-ui/core/styles';
-import { Divider } from '@material-ui/core';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { routes } from '../Router';
 import * as CPS from './style';
 import * as RPS from '../RestaurantPage/style';
+import { withStyles } from '@material-ui/core/styles';
+import { Divider } from '@material-ui/core';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import MyButton from '../../components/material/Button';
 import MyPageTitle from '../../components/PageTitle/pageTitleBar';
 import MyBottomNav from '../../components/material/BottomNav';
-import { getProfile } from '../../actions/profile';
-import { placeOrder } from '../../actions/order';
 import ProductCard from '../../components/ProductCard';
-import MyButton from '../../components/material/Button';
+import { routes } from '../Router';
 import { setBottomNav} from '../../actions/app'
+import { placeOrder } from '../../actions/order';
+import { getProfile } from '../../actions/profile';
 
 const GreenRadio = withStyles({
   root: {

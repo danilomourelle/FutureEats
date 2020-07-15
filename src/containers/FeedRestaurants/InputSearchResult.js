@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import { InputAdornment, Typography } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
-import MyPageTitle from '../../components/PageTitle/pageTitleBar';
 import { InputSearch, MainWrapper, CardsWrapper } from './styles';
-import { getRestaurantDetails } from '../../actions/restaurant';
+import { InputAdornment, Typography } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 import CardsRestaurants from '../../components/CardRestaurant';
-
+import MyPageTitle from '../../components/PageTitle/pageTitleBar';
 import { routes } from '../Router';
+import { getRestaurantDetails } from '../../actions/restaurant';
 
 class InputSearchResult extends Component {
   constructor(props) {

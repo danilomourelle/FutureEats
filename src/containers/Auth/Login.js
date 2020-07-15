@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
-import { routes } from '../Router';
-import { login } from '../../actions/profile';
+import { PageWrapper, FormStyle, LogoFutureEats, Text, } from './style';
 import MyButton from '../../components/material/Button';
 import { MyPasswordInput, MyInput } from '../../components/material/Inputs';
-import {
-  PageWrapper, FormStyle, LogoFutureEats, Text,
-} from './style';
+import { routes } from '../Router';
+import { login } from '../../actions/profile';
 
 const logo = require('../../images/LogoPage/logo-future-eats-invert.png');
 
@@ -22,7 +20,7 @@ class LoginPage extends Component {
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     if (localStorage.getItem('token') !== null) {
       localStorage.removeItem('token')
     }

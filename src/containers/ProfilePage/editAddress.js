@@ -1,15 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { goBack, push } from 'connected-react-router';
-import { routes } from '../Router';
-
+import { PageWrapper } from './styles';
 import MyButton from '../../components/material/Button';
 import { MyInput } from '../../components/material/Inputs';
 import MyPageTitle from '../../components/PageTitle/pageTitleBar';
-
+import { routes } from '../Router';
 import { getFullAddress, addressRegisterModifications } from '../../actions/profile';
 
-import { PageWrapper } from './styles';
 
 class AddressEdit extends React.Component {
   constructor(props) {

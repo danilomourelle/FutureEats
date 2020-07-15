@@ -1,17 +1,17 @@
 import React from 'react';
 import { push } from 'connected-react-router';
 import { connect } from 'react-redux';
-import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
-import { routes } from '../Router';
-import MyPageTitle from '../../components/PageTitle/pageTitleBar';
-import HistoryUnit from '../../components/HistoryUnit';
-import MyBottomNav from '../../components/material/BottomNav';
 import {
   PageWrapper, ProfileWrapper, AddressWrapper,
   IconWrapper, SubTitle, Divisor, ParagraphWrapper,
   InfoWrapper,
   NoOrderParagraph,
 } from './styles';
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+import MyPageTitle from '../../components/PageTitle/pageTitleBar';
+import HistoryUnit from '../../components/HistoryUnit';
+import MyBottomNav from '../../components/material/BottomNav';
+import { routes } from '../Router';
 import { getProfile, getOrderHistory } from '../../actions/profile';
 import { setBottomNav} from '../../actions/app'
 

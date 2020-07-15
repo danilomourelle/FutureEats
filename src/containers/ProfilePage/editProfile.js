@@ -1,15 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { push, goBack } from 'connected-react-router';
-import { routes } from '../Router';
-
+import { PageWrapper } from './styles';
 import MyButton from '../../components/material/Button';
 import { MyInput } from '../../components/material/Inputs';
 import MyPageTitle from '../../components/PageTitle/pageTitleBar';
-
+import { routes } from '../Router';
 import { updateProfile, setProfileDetails } from '../../actions/profile';
 
-import { PageWrapper } from './styles';
 
 class ProfileEdit extends React.Component {
   constructor(props) {
