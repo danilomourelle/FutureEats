@@ -1,12 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Button } from '@material-ui/core'
-
+import React from 'react';
+import styled from 'styled-components';
+import { Button } from '@material-ui/core';
 
 const Wrapper = styled.div`
   width:100%;
   padding:0 16px;
-`
+`;
 const StyledButton = styled(Button)`
   height:42px;
   border-radius:2px;
@@ -18,23 +17,23 @@ const StyledButton = styled(Button)`
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
-`
+`;
 
-export function MyButton(props) {
+function MyButton(props) {
   return (
     <Wrapper>
       <StyledButton
         color="primary"
-        type='submit'
-        disableElevation={true}
+        type="submit"
+        disableElevation
         fullWidth
-        variant='contained'
+        variant="contained"
         disabled={props.disabled}
       >
         {props.btnText}
       </StyledButton>
     </Wrapper>
-  )
+  );
 }
 
-export default MyButton
+export default MyButton;

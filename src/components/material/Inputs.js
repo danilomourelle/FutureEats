@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 import {
   TextField,
   FormControl,
@@ -7,17 +7,15 @@ import {
   InputLabel,
   InputAdornment,
   IconButton,
-  FormHelperText
-} from '@material-ui/core'
+  FormHelperText,
+} from '@material-ui/core';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-
-
 
 const Wrapper = styled.div`
   width:100%;
   padding:0 16px;
-`
+`;
 const TextFieldStyled = styled(TextField)`
   border-radius:2px;
   text-transform: none;
@@ -27,16 +25,16 @@ const TextFieldStyled = styled(TextField)`
   & .MuiOutlinedInput-root{
     border-radius:2px;
   }
-`
+`;
 const OutlinedInputStyled = styled(OutlinedInput)`
   border-radius:2px;
   font-size:16px;
   margin: 8px 0;
-`
+`;
 
 export function MyInput(props) {
-  const pattern = props.pattern
-  const title = props.title
+  const { pattern } = props;
+  const { title } = props;
   return (
     <Wrapper>
       <TextFieldStyled
@@ -50,15 +48,15 @@ export function MyInput(props) {
         required={props.required}
         fullWidth
         inputProps={{
-          pattern: pattern,
-          title:title
+          pattern,
+          title,
         }}
         InputLabelProps={{
           shrink: true,
         }}
       />
     </Wrapper>
-  )
+  );
 }
 
 export function MyPasswordInput(props) {
@@ -77,7 +75,7 @@ export function MyPasswordInput(props) {
 
   return (
     <Wrapper>
-      <FormControl required variant='outlined' fullWidth error={props.error} >
+      <FormControl required variant="outlined" fullWidth error={props.error}>
         <InputLabel htmlFor={props.id}>{props.label}</InputLabel>
         <OutlinedInputStyled
           id={props.id}
@@ -85,7 +83,7 @@ export function MyPasswordInput(props) {
           type={values.showPassword ? 'text' : 'password'}
           value={props.value}
           onChange={props.onChange}
-          endAdornment={
+          endAdornment={(
             <InputAdornment position="end">
               <IconButton
                 aria-label="toggle password visibility"
@@ -95,11 +93,11 @@ export function MyPasswordInput(props) {
                 {values.showPassword ? <Visibility /> : <VisibilityOff />}
               </IconButton>
             </InputAdornment>
-          }
+          )}
           labelWidth={70}
         />
         {props.showHelper && <FormHelperText>Deve ser a mesma que a anterior.</FormHelperText>}
       </FormControl>
     </Wrapper>
-  )
+  );
 }

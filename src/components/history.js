@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
   width:calc(100% - 32px);
@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   &:last-of-type{
     margin-bottom:64px;
   }
-`
+`;
 const Infos = styled.p`
   margin:0;
   width:100%;
@@ -32,64 +32,68 @@ const Infos = styled.p`
     font-weight:bold;
     line-height:normal;
   }
-`
+`;
 
-
-export function HystoryUnit(props) {
-  const { order } = props
+function HistoryUnit(props) {
+  const { order } = props;
 
   const timeTracker = (createdAt) => {
     const date = new Date(parseInt(createdAt, 10));
-    let day = date.getDate(), month, year = date.getFullYear()
+    const day = date.getDate(); let month; const
+      year = date.getFullYear();
     switch (date.getMonth()) {
       case 0:
-        month = 'Janeiro'
+        month = 'Janeiro';
         break;
       case 1:
-        month = 'Fevereiro'
+        month = 'Fevereiro';
         break;
       case 2:
-        month = 'Março'
+        month = 'Março';
         break;
       case 3:
-        month = 'Abril'
+        month = 'Abril';
         break;
       case 4:
-        month = 'Maio'
+        month = 'Maio';
         break;
       case 5:
-        month = 'Junho'
+        month = 'Junho';
         break;
       case 6:
-        month = 'Julho'
+        month = 'Julho';
         break;
       case 7:
-        month = 'Agosto'
+        month = 'Agosto';
         break;
       case 8:
-        month = 'Setembro'
+        month = 'Setembro';
         break;
       case 9:
-        month = 'Outubro'
+        month = 'Outubro';
         break;
       case 10:
-        month = 'Novembro'
+        month = 'Novembro';
         break;
       case 11:
-        month = 'Dezembro'
+        month = 'Dezembro';
         break;
       default:
         break;
     }
-    return `${day} de ${month} de ${year}`
-  }
+    return `${day} de ${month} de ${year}`;
+  };
   return (
     <Wrapper>
       <Infos>{order.restaurantName}</Infos>
       <Infos>{timeTracker(order.createdAt)}</Infos>
-      {order.totalPrice ? <Infos>{'SUBTOTAL ' + order.totalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} </Infos> : <Infos>Valor não encontrado</Infos>}
+      {order.totalPrice ? (
+        <Infos>
+          {`SUBTOTAL ${order.totalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`}
+        </Infos>
+      ) : <Infos>Valor não encontrado</Infos>}
     </Wrapper>
-  )
+  );
 }
 
-export default HystoryUnit
+export default HistoryUnit;
