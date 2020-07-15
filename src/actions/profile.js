@@ -142,13 +142,6 @@ export const setProfileFullAddress = (profileFullAddress) => (
     payload: { profileFullAddress },
   }
 );
-// TODO: VERIFICAR SE ESSA ACTION É CHAMADA
-export const setProfileShortAddress = (profileShortAddress) => (
-  {
-    type: 'SET_PROFILE_SHORT_ADDRESS',
-    payload: { profileShortAddress },
-  }
-);
 export const setOrderHistory = (orderHistory) => (
   {
     type: 'SET_PROFILE_ORDER_HISTORY',
