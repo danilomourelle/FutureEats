@@ -6,3 +6,10 @@ export const setBottomNav = (actualPlace) => (
     payload: { actualPlace },
   }
 );
+
+export const setDialog = (status) => (
+  {
+    type: 'SET_DIALOG_OPEN',
+    payload: { dialog: status },
+  }
+);

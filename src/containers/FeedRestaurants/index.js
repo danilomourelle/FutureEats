@@ -12,7 +12,7 @@ import FilterScroll from '../../components/FilterScroll';
 import { routes } from '../Router';
 import { getRestaurants } from '../../actions/restaurant';
 
-import CardsRestaurants from '../../components/CardRestaurant';
+import CardsRestaurants from '../../components/CardRestaurant'
 import CardOrder from '../../components/CardOrderActive';
 import { getActiveOrder, setActiveOrder, setOrder } from '../../actions/order';
 

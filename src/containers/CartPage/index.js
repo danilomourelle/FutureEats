@@ -13,7 +13,7 @@ import MyPageTitle from '../../components/PageTitle/pageTitleBar';
 import MyBottomNav from '../../components/material/BottomNav';
 import { getProfile } from '../../actions/profile';
 import { placeOrder } from '../../actions/order';
-import ProductCard from '../../components/ProductCard/index';
+import ProductCard from '../../components/ProductCard';
 import MyButton from '../../components/material/Button';
 
 const GreenRadio = withStyles({
