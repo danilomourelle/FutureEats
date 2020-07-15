@@ -62,7 +62,7 @@ class CartPage extends Component {
     const { restaurant, products } = order
     return (
       <>
-        <MyPageTitle showBack pageTitle="Meu Carrinho" />
+        <MyPageTitle pageTitle="Meu Carrinho" />
         <CPS.PageWrapper>
           <CPS.GreyBox>
             <CPS.AddressLabel>Endereço de Entrega</CPS.AddressLabel>
