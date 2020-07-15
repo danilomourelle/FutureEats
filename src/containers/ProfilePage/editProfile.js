@@ -40,10 +40,11 @@ class ProfileEdit extends React.Component {
   }
 
   handleInputChange = (e) => {
+    const { name, value } = e.target
     this.setState((prevState) => ({
       form: {
         ...prevState.form,
-        [e.target.name]: e.target.value,
+        [name]: value,
       },
     }));
   }

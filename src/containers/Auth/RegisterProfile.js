@@ -32,10 +32,11 @@ class RegisterPage extends Component {
   }
 
   handleInputValue = (e) => {
+    const { name, value } = e.target
     this.setState((prevState) => ({
       form: {
         ...prevState.form,
-        [e.target.name]: e.target.value,
+        [name]: value,
       },
     }));
   }
