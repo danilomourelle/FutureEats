@@ -7,8 +7,8 @@ border: solid 1px #b8b8b8;
 display:grid;
 align-self:center;
 font-size: 16px;
-grid-template-columns: 1fr 1.5fr 1fr;
-grid-template-rows: 33px 48px 31px;
+grid-template-columns: 1fr 1.5fr 91px;
+grid-template-rows: 50px 48px 31px;
 grid-template-areas:
 "image nome topCounter"
 "image data data"
@@ -22,7 +22,6 @@ object-fit: cover;
 grid-area: image;
 `;
 export const ProductName = styled.div`
-width: 167px;
 height: 18px;
 line-height: normal;
 letter-spacing: -0.39px;

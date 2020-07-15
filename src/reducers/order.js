@@ -1,5 +1,5 @@
 const initialState = {
-  order: {
+  currentOrder: {
     products: [],
   },
   activeOrder: null,
@@ -10,22 +10,22 @@ const order = (state = initialState, action) => {
     case 'SET_ORDER':
       return {
         ...state,
-        restaurantOrder: action.payload.order,
+        currentOrder: action.payload.order,
       };
     case 'UPDATE_ORDER':
       return {
         ...state,
-        restaurantOrder: {
-          ...state.restaurantOrder,
-          products: [...state.restaurantOrder.products, action.payload.product],
+        currentOrder: {
+          ...state.restaurant,
+          products: [...state.currentOrder.products, action.payload.product],
         },
       };
     case 'DEL_ORDER':
       return {
         ...state,
-        restaurantOrder: {
-          ...state.restaurantOrder,
-          products: state.restaurantOrder.products.filter((product) => product.id !== action.payload.productId),
+        currentOrder: {
+          ...state.restaurant,
+          products: state.currentOrder.products.filter((product) => product.id !== action.payload.productId),
         },
       };
     case 'SET_ACTIVE_ORDER':

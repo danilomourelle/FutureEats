@@ -60,6 +60,7 @@ class InputSearchResult extends Component {
           placeholder="Restaurante"
           value={this.state.inputValue}
           onChange={this.inputSearchChange}
+          autoFocus
           startAdornment={(
             <InputAdornment position="start">
               <SearchIcon />

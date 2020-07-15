@@ -14,20 +14,14 @@ class RestaurantPage extends Component {
     const token = localStorage.getItem('token');
     if (token === null) {
       goToLogin();
-    } else if (!restaurantDetails.id) {
-      goToFeed();
+    } else if (!restaurantDetails) {
+      goToFeed()
     }
-  }
-
-  filterDetails = () => {
-    const { restaurantDetails } = this.props;
-    const { products, ...filteredDetails } = restaurantDetails;
-    return filteredDetails;
   }
 
   render() {
     const { restaurantDetails } = this.props;
-    if (!restaurantDetails.id) {
+    if (!restaurantDetails) {
       return (
         <div>
           Nothing here!
@@ -51,25 +45,26 @@ class RestaurantPage extends Component {
         <RPS.DividerTitle>Principal</RPS.DividerTitle>
         <Divider />
         {
-          restaurantDetails.products.filter((product) => (
-            product.category !== 'Acompanhamento'
-          )).map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              restaurantDetails={this.filterDetails()}
-            />
-          ))
+          restaurantDetails.products
+            .filter((product) => (
+              product.category !== 'Acompanhamento'
+            ))
+            .map((product) => (
+              <ProductCard key={product.id} product={product}
+              />
+            ))
         }
 
         <RPS.DividerTitle>Acompanhamentos</RPS.DividerTitle>
         <Divider />
         {
-          restaurantDetails.products.filter((product) => (
-            product.category === 'Acompanhamento'
-          )).map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))
+          restaurantDetails.products
+            .filter((product) => (
+              product.category === 'Acompanhamento'
+            ))
+            .map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))
         }
       </RPS.Restaurant>
     );

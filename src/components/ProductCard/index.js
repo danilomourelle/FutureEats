@@ -22,7 +22,8 @@ class ProductCard extends React.Component {
   }
 
   checkProductAlreadyInOrder = (thisProductId) => {
-    if (this.props.order.products) {
+    const { products } = this.props.order
+    if (products.length > 0) {
       const productAdded = this.props.order.products.filter((product) => (
         product.id === thisProductId
       ));
@@ -42,13 +43,13 @@ class ProductCard extends React.Component {
 
   setOrder = (quantity) => {
     const {
-      order, restaurantDetails, product, setNewOrder, updateCurrentOrder,
+      order, restaurantDetails, product, setCurrentOrder, updateCurrentOrder,
     } = this.props;
     if (order.restaurant.id === restaurantDetails.id) {
       updateCurrentOrder({ ...product, quantity });
     } else {
       const { products, ...newRestaurantDetails } = restaurantDetails
-      setNewOrder({
+      setCurrentOrder({
         restaurant: { ...newRestaurantDetails },
         products: [{ ...product, quantity }],
       });
@@ -97,12 +98,12 @@ class ProductCard extends React.Component {
 
 const mapStateToProps = (state) => ({
   restaurantDetails: state.restaurant.restaurantDetails,
-  order: state.order.order,
+  order: state.order.currentOrder,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   deleteOrder: (productId) => dispatch(delOrder(productId)),
-  setOrder: (order) => dispatch(setOrder(order)),
+  setCurrentOrder: (order) => dispatch(setOrder(order)),
   updateCurrentOrder: (productId) => dispatch(updateOrder(productId)),
 });
 
