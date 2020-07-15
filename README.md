@@ -1,9 +1,9 @@
-> Status do Projeto: Concluido :heavy_check_mark:
+> Status do Projeto: Concluído :heavy_check_mark:
 ## Danilo Mourelle
-Atualmente um desenvolverdor Web Fullstack (NodeJS), tenho 3 anos de experiência em programação de robôs industriais, onde desenvolvi habilidade na área de programação de linguagens de alto nível e lógica de programação. Também fiz parte, por 4 anos, de um grupo de pesquisa científica em sistemas neurais com foco em memória, aprendizado e Doença de Alzheimer onde obtive familiaridade com documentações em lingua inglesa e a repetibilidade de protocolos pré-estabelecidos.
+Atualmente um desenvolvedor Web Fullstack (NodeJS), tenho 3 anos de experiência em programação de robôs industriais, onde desenvolvi habilidade na área de programação de linguagens de alto nível e lógica de programação. Também fiz parte, por 4 anos, de um grupo de pesquisa científica em sistemas neurais com foco em memória, aprendizado e Doença de Alzheimer onde obtive familiaridade com documentações em lingua inglesa e a repetibilidade de protocolos pré-estabelecidos.
 
 **Canais de comunicação**:
-- [Linkedin](https://www.linkedin.com/in/danilomourelle/)
+- [LinkedIn](https://www.linkedin.com/in/danilomourelle/)
 - [Github](https://github.com/danilomourelle)
 - <danilomourelle@outlook.com>
 
@@ -66,7 +66,7 @@ Para fechar com chave de outro e aplicar essa lista gigantesca, vamos fazer um p
 
 :trophy: Simular o funcionamento de um aplicativo de delivery baseados nos modelos encontrados nos mercado 
 
-:trophy: Aplicação frontend completa estilização *Design System*, *actions* sincronas e assíncronas, requisições HTTP (API Rest), armazenamento de dados não sensíveis em ambiente local.
+:trophy: Aplicação frontend completa estilização *Design System*, *actions* síncronas e assíncronas, requisições HTTP (API Rest), armazenamento de dados não sensíveis em ambiente local.
 
 ### Linguagens e libs utilizadas :books:
 
@@ -83,10 +83,10 @@ Para fechar com chave de outro e aplicar essa lista gigantesca, vamos fazer um p
 - [redux-thunk](https://www.npmjs.com/package/redux-thunk): versão 2.3.0
 
 ### Conhecimentos adquiridos durante o projeto :mortar_board:
-- Animações e estilazação avançada em CSS com *styled components*
+- Animações e estilização avançada em CSS com *styled components*
 - Renderização baseada em rotas para aplicação *single page*
-- Gerenciamento de informaçãoes em *store* centralizada e conectada
-- Escrita e leitura de dados em banco de dados de forma assícrona
+- Gerenciamento de informações em *store* centralizada e conectada
+- Escrita e leitura de dados em banco de dados de forma assíncrona
 - Autenticação e Autorização com armazenamento local de dados não sensíveis e criptografados.
 
 ### Como rodar a aplicação :arrow_forward:
