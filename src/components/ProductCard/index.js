@@ -36,7 +36,7 @@ class ProductCard extends React.Component {
   }
 
   handleDialog = (status, id) => {
-    const { product, setDialog } = this.props
+    const { setDialog } = this.props
     setDialog({
       status,
       productId: id,
