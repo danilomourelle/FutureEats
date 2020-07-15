@@ -41,7 +41,7 @@ class AddressEdit extends React.Component {
         form: {
           street: address.street,
           number: address.number,
-          neighborhood: address.neighborhood,
+          neighbourhood: address.neighbourhood,
           city: address.city,
           state: address.state,
           complement: address.complement || '',
@@ -51,10 +51,11 @@ class AddressEdit extends React.Component {
   }
 
   handleInputChange = (e) => {
+    const { name, value } = e.target
     this.setState((prevState) => ({
       form: {
         ...prevState.form,
-        [e.target.name]: e.target.value,
+        [name]: value,
       },
     }));
   }
@@ -101,7 +102,7 @@ class AddressEdit extends React.Component {
             type="text"
             required
             placeholder="Bairro"
-            value={this.state.form.neighborhood}
+            value={this.state.form.neighbourhood}
             onChange={this.handleInputChange}
           />
           <MyInput

@@ -15,7 +15,7 @@ class AddressRegister extends Component {
       form: {
         street: '',
         number: '',
-        neighborhood: '',
+        neighbourhood: '',
         city: '',
         state: '',
         complement: '',
@@ -45,7 +45,7 @@ class AddressRegister extends Component {
       form: {
         street: '',
         number: '',
-        neighborhood: '',
+        neighbourhood: '',
         city: '',
         state: '',
         complement: '',
@@ -55,7 +55,7 @@ class AddressRegister extends Component {
 
   render() {
     const {
-      street, number, neighborhood, city, state, complement,
+      street, number, neighbourhood, city, state, complement,
     } = this.state.form;
     return (
       <PageWrapper>
@@ -89,13 +89,13 @@ class AddressRegister extends Component {
             value={complement}
           />
           <MyInput
-            name="neighborhood"
+            name="neighbourhood"
             type="text"
             label="Bairro"
             placeholder="Bairro"
             required
             onChange={this.handleInputValue}
-            value={neighborhood}
+            value={neighbourhood}
           />
           <MyInput
             name="city"
