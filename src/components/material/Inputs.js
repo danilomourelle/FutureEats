@@ -32,20 +32,11 @@ const OutlinedInputStyled = styled(OutlinedInput)`
   margin: 8px 0;
 `;
 
-export function MyInput(props) {
-  const { pattern } = props;
-  const { title } = props;
+export function MyInput({ pattern, title, ...rest }) {
   return (
     <Wrapper>
       <TextFieldStyled
-        label={props.label}
         variant="outlined"
-        name={props.name}
-        placeholder={props.placeholder}
-        type={props.type}
-        value={props.value}
-        onChange={props.onChange}
-        required={props.required}
         fullWidth
         inputProps={{
           pattern,
@@ -54,12 +45,13 @@ export function MyInput(props) {
         InputLabelProps={{
           shrink: true,
         }}
+        {...rest}
       />
     </Wrapper>
   );
 }
 
-export function MyPasswordInput(props) {
+export function MyPasswordInput({id, label, error, showHelper, ...rest}) {
   const [values, setValues] = React.useState({
     amount: '',
     showPassword: false,
@@ -75,14 +67,11 @@ export function MyPasswordInput(props) {
 
   return (
     <Wrapper>
-      <FormControl required variant="outlined" fullWidth error={props.error}>
-        <InputLabel htmlFor={props.id}>{props.label}</InputLabel>
+      <FormControl required variant="outlined" fullWidth error={error}>
+        <InputLabel htmlFor={id}>{label}</InputLabel>
         <OutlinedInputStyled
-          id={props.id}
-          name={props.name}
+          id={id}
           type={values.showPassword ? 'text' : 'password'}
-          value={props.value}
-          onChange={props.onChange}
           endAdornment={(
             <InputAdornment position="end">
               <IconButton
@@ -95,8 +84,9 @@ export function MyPasswordInput(props) {
             </InputAdornment>
           )}
           labelWidth={70}
+          {...rest}
         />
-        {props.showHelper && <FormHelperText>Deve ser a mesma que a anterior.</FormHelperText>}
+        {showHelper && <FormHelperText>Deve ser a mesma que a anterior.</FormHelperText>}
       </FormControl>
     </Wrapper>
   );
