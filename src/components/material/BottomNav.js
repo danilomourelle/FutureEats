@@ -40,30 +40,8 @@ const Wrapper = styled.span`
 `;
 
 class MyBottomNav extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 'home',
-    };
-  }
-
-  componentDidMount() {
-    this.setState({
-      value: this.props.place,
-    });
-  }
-  componentDidUpdate(prevProps) {
-    if (prevProps.place !== this.props.place) {
-      this.setState({
-        value: this.props.place,
-      });
-    }
-  }
-
+ 
   onNavChange = (e, newValue) => {
-    this.setState({
-      value: newValue,
-    });
     switch (newValue) {
       case 'home':
         this.props.goToHomePage();
@@ -87,7 +65,7 @@ class MyBottomNav extends React.Component {
   render() {
     return (
       <Wrapper>
-        <BottomNavigation value={this.state.value} onChange={this.onNavChange}>
+        <BottomNavigation value={this.props.place} onChange={this.onNavChange}>
           <BottomNavigationAction value="home" icon={<HomeLogo />} />
           <BottomNavigationAction value="cart" icon={<CartLogo />} />
           <BottomNavigationAction value="profile" icon={<ProfileLogo />} />

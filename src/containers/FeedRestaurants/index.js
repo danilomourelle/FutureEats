@@ -12,6 +12,7 @@ import FilterScroll from '../../components/FilterScroll';
 import CardsRestaurants from '../../components/CardRestaurant'
 import CardOrder from '../../components/CardOrderActive';
 import { routes } from '../Router';
+import { setBottomNav} from '../../actions/app'
 import { getActiveOrder, setActiveOrder, setOrder } from '../../actions/order';
 import { getRestaurants } from '../../actions/restaurant';
 
@@ -29,6 +30,7 @@ class FeedRestaurants extends Component {
     } else {
       this.props.getActiveOrder();
       this.props.getRestaurants();
+      this.props.setBottomNav('home')
     }
   }
 
@@ -97,6 +99,7 @@ const mapDispatchToProps = (dispatch) => ({
   getRestaurants: () => dispatch(getRestaurants()),
   goToLogin: () => dispatch(push(routes.login)),
   goToSearch: () => dispatch(push(routes.inputSearch)),
+  setBottomNav: (actualPlace) => dispatch(setBottomNav(actualPlace)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FeedRestaurants);

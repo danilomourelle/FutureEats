@@ -56,8 +56,7 @@ class CartPage extends Component {
   }
 
   render() {
-    const { order, profile } = this.props;
-    const { restaurant, products } = order
+    const { order: { restaurant, products }, profile } = this.props;
     return (
       <>
         <MyPageTitle pageTitle="Meu Carrinho" />
