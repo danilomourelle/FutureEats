@@ -67,6 +67,7 @@ class AddressRegister extends Component {
             label="Logradouro"
             placeholder="Rua / Av."
             required
+            autoFocus
             onChange={this.handleInputValue}
             value={street}
           />

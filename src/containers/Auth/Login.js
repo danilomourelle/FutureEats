@@ -65,6 +65,7 @@ class LoginPage extends Component {
             label="Email"
             placeholder="email@email.com"
             required
+            autoFocus
             onChange={this.handleInputValue}
             value={this.state.form.email}
           />

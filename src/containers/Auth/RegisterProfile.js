@@ -80,6 +80,7 @@ class RegisterPage extends Component {
             label="Nome"
             placeholder="Nome e Sobrenome"
             required
+            autoFocus
             onChange={this.handleInputValue}
             value={this.state.form.name}
           />
