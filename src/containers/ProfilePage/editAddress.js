@@ -16,7 +16,7 @@ class AddressEdit extends React.Component {
       form: {
         street: '',
         number: '',
-        neighborhood: '',
+        neighbourhood: '',
         city: '',
         state: '',
         complement: '',
